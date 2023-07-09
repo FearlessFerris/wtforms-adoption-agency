@@ -1,0 +1,38 @@
+{% extends 'base.html' %}   
+
+{% block title %}  Edit Pet Information  {% endblock %}   
+
+
+{% block content %}   
+
+<div class = 'container text-center'>
+   <h1>  {{pets.name}} </h1>
+
+   {% if pets.picture_url %}  
+
+   <img src = '{{pets.picture_url}}' width = '250px'>
+
+   {% endif %}
+
+
+   <h2> Update </h2>
+
+   <form method = 'POST'>
+    {{ form.hidden_tag() }}
+    {% for field in form 
+        if field.widget.input_type != 'hidden' %}
+
+    <p> 
+        {{field.label}}
+        {{field}}
+    </p>
+
+    {% endfor %}
+    <button> Update </button>
+   </form>
+</div>
+{% endblock %}
+
+
+
+
